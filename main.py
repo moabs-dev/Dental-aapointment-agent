@@ -1,17 +1,29 @@
 """
-Dental Appointment System — powered by LangGraph + Grok-4 (xAI)
+Dental Appointment System — powered by LangGraph
 """
 
+import os
 from dotenv import load_dotenv
 load_dotenv()
 
 from langchain_core.messages import HumanMessage, AIMessageChunk
 from dental_agent.agent import dental_graph
 
-BANNER = """
+# Detect which API key is available
+xai_key = os.getenv("XAI_API_KEY", "")
+groq_key = os.getenv("GROQ_API_KEY", "")
+
+if xai_key:
+    POWERED_BY = "LangGraph + Grok-4 (xAI)"
+elif groq_key:
+    POWERED_BY = "LangGraph + Groq (Llama 3.3 70B)"
+else:
+    POWERED_BY = "LangGraph"
+
+BANNER = f"""
 ╔══════════════════════════════════════════════════════════╗
 ║         Dental Appointment Management System             ║
-║         Powered by LangGraph + Grok-4 (xAI)              ║
+║         Powered by {POWERED_BY:<38}║
 ╚══════════════════════════════════════════════════════════╝
 Examples:
   • Show available slots for an orthodontist

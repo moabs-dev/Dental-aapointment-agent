@@ -1,6 +1,8 @@
 # Dental Appointment Management System
 
-A conversational AI system for managing dental appointments, powered by LangGraph and Grok-4 (xAI). This project demonstrates a multi-agent architecture where specialized agents work together to handle different appointment-related tasks through natural language interactions.
+A conversational AI system for managing dental appointments, powered by LangGraph. This project demonstrates a multi-agent architecture where specialized agents work together to handle different appointment-related tasks through natural language interactions.
+
+Supports both **xAI (Grok-4)** and **Groq (Llama 3.3 70B)** API providers.
 
 ## Overview
 
@@ -50,7 +52,7 @@ The system follows a supervisor pattern where a central coordinator analyzes use
 
 - **LangGraph**: Orchestrates the multi-agent workflow and state management
 - **LangChain**: Provides the LLM integration and tool framework
-- **Grok-4 (xAI)**: Powers the conversational AI capabilities
+- **Groq (Llama 3.3 70B)** or **xAI (Grok-4)**: Powers the conversational AI capabilities
 - **Pandas**: Manages the CSV-based data storage
 - **Pydantic**: Handles structured data validation
 
@@ -85,7 +87,7 @@ dental_agent_project/
 ### Prerequisites
 
 - Python 3.10 or higher
-- An xAI API key (Grok-4 model)
+- A Groq API key (free) OR xAI API key (Grok-4)
 
 ### Steps
 
@@ -236,11 +238,21 @@ Tools provide an abstraction layer over the CSV data, making it easy to:
 
 Environment variables can be set in `.env`:
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| XAI_API_KEY | Your xAI API key | Required |
-| MODEL_NAME | LLM model to use | grok-4 |
-| TEMPERATURE | LLM creativity (0=deterministic) | 0 |
+### Option 1: Groq (Free)
+```bash
+GROQ_API_KEY=your_groq_api_key
+MODEL_NAME=llama-3.3-70b-versatile
+TEMPERATURE=0
+```
+Get your free API key from [console.groq.com](https://console.groq.com)
+
+### Option 2: xAI (Grok-4)
+```bash
+XAI_API_KEY=your_xai_api_key
+MODEL_NAME=grok-4
+TEMPERATURE=0
+```
+Get your API key from [console.x.ai](https://console.x.ai)
 
 ## License
 

@@ -1,8 +1,8 @@
-from langchain_xai import ChatXAI
+from langchain_groq import ChatGroq
 from langchain_core.messages import SystemMessage
 from langgraph.prebuilt import create_react_agent
 
-from dental_agent.config.settings import XAI_API_KEY, MODEL_NAME, TEMPERATURE
+from dental_agent.config.settings import GROQ_API_KEY, MODEL_NAME, TEMPERATURE
 from dental_agent.utils import sanitize_messages
 from dental_agent.tools.csv_reader import (
     get_available_slots,
@@ -60,6 +60,6 @@ def _pre_model_hook(state: dict) -> dict:
     return {"llm_input_messages": [SystemMessage(content=SYSTEM_PROMPT)] + sanitized}
 
 
-llm = ChatXAI(api_key=XAI_API_KEY, model=MODEL_NAME, temperature=TEMPERATURE)
+llm = ChatGroq(groq_api_key=GROQ_API_KEY, model=MODEL_NAME, temperature=TEMPERATURE)
 
 dental_graph = create_react_agent(model=llm, tools=TOOLS, pre_model_hook=_pre_model_hook)
