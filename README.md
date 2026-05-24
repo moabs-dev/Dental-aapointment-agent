@@ -256,4 +256,4 @@ Get your API key from [console.x.ai](https://console.x.ai)
 
 ## License
 
-This project is provided for educational purposes.
+Apache-2.0 license - see LICENSE file for details.
